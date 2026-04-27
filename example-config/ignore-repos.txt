@@ -1,0 +1,1 @@
+some-repo-i-dont-want-to-scan
