@@ -89,7 +89,7 @@ By default the scanner uses the `lockfile` preset (all lock file / manifest extr
 | `java/gradlelockfile` | Java not in scope |
 | `java/gradleverificationmetadataxml` | Java not in scope |
 
-> **Note:** GitHub Actions workflow scanning (`.github/workflows/*.yml`) is not supported by osv-scanner/osv-scalibr at this time.
+> **Note:** GitHub Actions workflow scanning (`.github/workflows/*.yml`) and Container images referenced in dockerfiles/k8s manifests is not supported atm.
 
 ### plugins.txt format
 
