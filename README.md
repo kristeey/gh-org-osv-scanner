@@ -1,4 +1,4 @@
-# org-vuln-scanner
+# gh-org-osv-scanner
 
 Scans all repositories in a GitHub organization for vulnerabilities using the [OSV Scanner](https://github.com/google/osv-scanner) library and writes a combined report to `scan-results.txt`.
 

@@ -30,3 +30,7 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# Custom
+scan-results.txt
+gh-org-osv-scanner

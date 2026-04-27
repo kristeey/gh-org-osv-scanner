@@ -1,4 +1,4 @@
-module org-vuln-scanner
+module gh-org-osv-scanner
 
 go 1.26.2
 
@@ -7,7 +7,6 @@ require (
 	github.com/google/go-github/v85 v85.0.0
 	github.com/google/osv-scanner/v2 v2.3.5
 	github.com/ossf/osv-schema/bindings/go v0.0.0-20260304051245-ec3272c283e4
-	github.com/pandatix/go-cvss v0.6.2
 )
 
 require (
@@ -115,6 +114,7 @@ require (
 	github.com/opencontainers/selinux v1.13.1 // indirect
 	github.com/owenrumney/go-sarif/v3 v3.3.0 // indirect
 	github.com/package-url/packageurl-go v0.1.5 // indirect
+	github.com/pandatix/go-cvss v0.6.2 // indirect
 	github.com/pierrec/lz4/v4 v4.1.17 // indirect
 	github.com/pjbgf/sha1cd v0.4.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect

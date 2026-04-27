@@ -20,8 +20,6 @@ import (
 	gogithub "github.com/google/go-github/v85/github"
 	"github.com/google/osv-scanner/v2/pkg/models"
 	"github.com/google/osv-scanner/v2/pkg/osvscanner"
-	gocvss30 "github.com/pandatix/go-cvss/30"
-	gocvss31 "github.com/pandatix/go-cvss/31"
 	"github.com/ossf/osv-schema/bindings/go/osvschema"
 )
 
@@ -449,7 +447,7 @@ func writeRepoResults(f *os.File, org, repoName, repoDir string, results models.
 	for _, v := range vulns {
 		vuln := v.Vulnerability
 		osvURL := "https://osv.dev/" + vuln.GetId()
-		cvss := cvssBaseScore(vuln.GetSeverity())
+		cvss := v.GroupInfo.MaxSeverity
 		ecosystem := string(v.Package.Ecosystem)
 		pkg := v.Package.Name
 		version := v.Package.Version
@@ -461,35 +459,6 @@ func writeRepoResults(f *os.File, org, repoName, repoDir string, results models.
 	renderTable(f, headers, rows)
 	fmt.Fprintln(f)
 	return len(vulns)
-}
-
-// cvssBaseScore returns the highest CVSS base score from a list of severities,
-// formatted to one decimal place (e.g. "6.6"). Returns "" if none computable.
-func cvssBaseScore(severities []*osvschema.Severity) string {
-	best := -1.0
-	for _, s := range severities {
-		score := s.GetScore()
-		var val float64
-		switch {
-		case strings.HasPrefix(score, "CVSS:3.0"):
-			if v, err := gocvss30.ParseVector(score); err == nil {
-				val = v.BaseScore()
-			}
-		case strings.HasPrefix(score, "CVSS:3.1"):
-			if v, err := gocvss31.ParseVector(score); err == nil {
-				val = v.BaseScore()
-			}
-		default:
-			continue
-		}
-		if val > best {
-			best = val
-		}
-	}
-	if best < 0 {
-		return ""
-	}
-	return fmt.Sprintf("%.1f", best)
 }
 
 // fixedVersion returns the first fixed version found for the given package across
