@@ -1,5 +1,7 @@
 # gh-org-osv-scanner
 
+![Slack post example](img/slack-post.png)
+
 Scans all repositories in a GitHub organization for vulnerabilities using the [OSV Scanner](https://github.com/google/osv-scanner) library and writes a combined report to `scan-results.txt`.
 
 ## How it works
@@ -48,8 +50,6 @@ Requirements:
 - Bot token scope: `files:write`
 - The bot must be invited to the target channel (`/invite @your-bot`)
 - Pass the channel ID (not name) via `--slack-channel`
-
-The upload uses the [Slack external upload API](https://docs.slack.dev/messaging/working-with-files/#upload) (`files.getUploadURLExternal` → PUT → `files.completeUploadExternal`).
 
 ## Plugins
 
